@@ -1,0 +1,11 @@
+---
+- name: Update repositories cache
+  apt: update_cache=yes
+
+- name: Install applications
+  apt: name={{ item  }} state=present
+  with_items:
+    - git-core
+    - unzip
+    - tar
+    - wget

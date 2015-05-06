@@ -1,0 +1,26 @@
+---
+- hosts: appservers
+  remote_user: root
+
+  roles:
+    - common
+    - java
+    - tomcat
+    - mysql
+
+  vars:
+    http_port: 8080
+    https_port: 8443
+    admin_username: admin
+    admin_password: Did4cticla
+
+    mysql_root_password: toor
+    mysql_databases:
+      - name: didactic-prod
+        encoding: latin1
+        collation: latin1_general_ci
+    mysql_users:
+      - name: admin
+        host: "%"
+        password: toor
+        priv: "didactic-prod.*:ALL"
